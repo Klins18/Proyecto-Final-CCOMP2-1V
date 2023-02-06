@@ -538,15 +538,21 @@ void Event::puzzleEncouter(Personaje &character)
 {
 	bool completed = false;
 	int userAns = 0;
-	int chances = 3;
+	int chances = 2;
 	int gainExp = (chances * character.getNivel() * (rand()%10 + 1));
 	int gainGold = (chances * character.getNivel() * (rand() % 10 + 1));
-	//H:\ConsoleRPG\ConsoleRPG\
-	
-	Puzzle puzzle("Puzzles/1.txt");
 
-	while (!completed && chances > 0)
-	{
+	int puzzleSelection = rand() % 2;
+	std::string puzzleFile = "Puzzles/";
+	if (puzzleSelection == 0){
+		puzzleFile += "1.txt";
+	}
+	else{
+		puzzleFile += "2.txt";
+	}
+	Puzzle puzzle(puzzleFile);
+
+	while (!completed && chances > 0){
 		std::cout << "Chances: " << chances << "\n\n";
 		chances--;
 		std::cout << puzzle.getAsString() << "\n";
