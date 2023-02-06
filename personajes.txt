@@ -1,0 +1,6 @@
+Paolo 7 100 1 75 5 5 5 5 35 8 0 0 EMPTY 0 -1 0 0 0 0 1 EMPTY 0 -1 0 0 0 -1 1 EMPTY 0 -1 0 0 0 -1 1 EMPTY 0 -1 0 0 0 -1 1 EMPTY 0 -1 0 0 0 -1 
+
+
+Klinsman 0 100 1 0 5 5 5 5 35 8 0 0 EMPTY 0 -1 0 0 0 0 1 EMPTY 0 -1 0 0 0 -1 1 EMPTY 0 -1 0 0 0 -1 1 EMPTY 0 -1 0 0 0 -1 1 EMPTY 0 -1 0 0 0 -1 
+
+
