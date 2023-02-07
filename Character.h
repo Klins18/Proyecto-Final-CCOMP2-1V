@@ -6,7 +6,6 @@
 #include"Armor.h"
 #include <cmath>
 
-using namespace std;
 
 class Personaje
 {
@@ -46,7 +45,7 @@ private:
 
 public:
 	Personaje();
-	Personaje(string nombre, int distanciaViajada,
+	Personaje(std::string nombre, int distanciaViajada,
 		int oro, int nivel,
 		int exp, int fuerza, int vitalidad,
 		int reflejos, int inteligencia,
@@ -56,9 +55,9 @@ public:
 	//Functions
 	void init(const std::string nombre);//inialize
 	void display() const; //display
-	string getAsString()const; //getAsString
-	string getInvAsString(bool tienda = false); //getInvAsString
-	string getInvAsStringSave(); //getInvAsStringSave
+	std::string getAsString()const; //getAsString
+	std::string getInvAsString(bool tienda = false); //getInvAsString
+	std::string getInvAsStringSave(); //getInvAsStringSave
 	void subidaNvl();//subidaNvl
 	void nuevStats();//nuevStats
 	void addStats(int stat, int val);//addStats

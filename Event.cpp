@@ -2,8 +2,6 @@
 
 int Event::nrOfEvents = 10;
 
-using namespace std;;
-
 Event::Event()
 {
 	
@@ -40,7 +38,7 @@ void Event::generateEvent(Personaje &character, dArr<Enemy>& enemies)
 		break;
 	case 9:
 		//Boss
-		cout << "Encuentro con Boss proximanente..." << "\n";
+		std::cout << "Encuentro con Boss proximanente..." << "\n";
 		break;
 
 	default:
@@ -54,7 +52,7 @@ void Event::tiendaEncouter(Personaje&character)
 	int choice = 0;
 	bool tiendaping = true;
 	Inventario merchantInv;
-	string inv;
+	std::string inv;
 	
 	//Init merchant inv
 	int nrOfItems = rand() % 20 + 10;
@@ -74,39 +72,39 @@ void Event::tiendaEncouter(Personaje&character)
 	{
 		system("CLS");
 
-		cout << "= tienda MENU =" << "\n\n";
+		std::cout << "= tienda MENU =" << "\n\n";
 
-		cout << "0: Salir de la Tienda" << "\n";
-		cout << "1: Comprar" << "\n";
-		cout << "2: Vender" << "\n";
-		cout << "\n";
+		std::cout << "0: Salir de la Tienda" << "\n";
+		std::cout << "1: Comprar" << "\n";
+		std::cout << "2: Vender" << "\n";
+		std::cout << "\n";
 
-		cout << "Eleccion: ";
+		std::cout << "Eleccion: ";
 
-		cin >> choice;
+		std::cin >> choice;
 
-		while (cin.fail() || choice > 3 || choice < 0)
+		while (std::cin.fail() || choice > 3 || choice < 0)
 		{
 			system("CLS");
 
-			cout << "Entrada Fallida!" << "\n";
-			cin.clear();
-			cin.ignore(100, '\n');
+			std::cout << "Entrada Fallida!" << "\n";
+			std::cin.clear();
+			std::cin.ignore(100, '\n');
 
-			cout << "= tienda MENU =" << "\n\n";
+			std::cout << "= tienda MENU =" << "\n\n";
 
-			cout << "0: Salir de la tienda" << "\n";
-			cout << "1: Comprar" << "\n";
-			cout << "2: Vender" << "\n";
+			std::cout << "0: Salir de la tienda" << "\n";
+			std::cout << "1: Comprar" << "\n";
+			std::cout << "2: Vender" << "\n";
 
-			cout << "\n";
+			std::cout << "\n";
 
-			cout << "Choice: ";
-			cin >> choice;
+			std::cout << "Choice: ";
+			std::cin >> choice;
 		}
 
-		cin.ignore(100, '\n');
-		cout << "\n";
+		std::cin.ignore(100, '\n');
+		std::cout << "\n";
 
 		//tienda
 		switch (choice)
@@ -117,107 +115,107 @@ void Event::tiendaEncouter(Personaje&character)
 
 		case 1: //Buy
 
-			cout << "= Menu Comprar =" << "\n\n";
+			std::cout << "= Menu Comprar =" << "\n\n";
 
-			cout << " - ORO: " <<character.getOro() << "\n\n";
+			std::cout << " - ORO: " <<character.getOro() << "\n\n";
 
 			inv.clear();
 
 			for (size_t i = 0; i < merchantInv.size(); i++)
 			{
-				inv += to_string(i) + ": " + merchantInv[i].toString() + "\n - PRICE: " + to_string(merchantInv[i].getBuyval()) + "\n";
+				inv += std::to_string(i) + ": " + merchantInv[i].toString() + "\n - PRICE: " + std::to_string(merchantInv[i].getBuyval()) + "\n";
 			}
 
-			cout << inv << "\n";
+			std::cout << inv << "\n";
 
-			cout << "Oro: " << character.getOro() << "\n";
-			cout << "Elije un articulo (-1 para salir): ";
+			std::cout << "Oro: " << character.getOro() << "\n";
+			std::cout << "Elije un articulo (-1 para salir): ";
 
-			cin >> choice;
+			std::cin >> choice;
 
-			while (cin.fail() || choice > merchantInv.size() || choice < -1)
+			while (std::cin.fail() || choice > merchantInv.size() || choice < -1)
 			{
 				system("CLS");
 
-				cout << "Opcion invalida!" << "\n";
-				cin.clear();
-				cin.ignore(100, '\n');
+				std::cout << "Opcion invalida!" << "\n";
+				std::cin.clear();
+				std::cin.ignore(100, '\n');
 
-				cout << "Oro: " << character.getOro() << "\n";
-				cout << "Elije un articulo (-1 para salir): ";
-				cin >> choice;
+				std::cout << "Oro: " << character.getOro() << "\n";
+				std::cout << "Elije un articulo (-1 para salir): ";
+				std::cin >> choice;
 			}
 
-			cin.ignore(100, '\n');
-			cout << "\n";
+			std::cin.ignore(100, '\n');
+			std::cout << "\n";
 
 			if (choice == -1)
 			{
-				cout << "Cancelado..." << "\n";
+				std::cout << "Cancelado..." << "\n";
 			}
 			else if (character.getOro() >= merchantInv[choice].getBuyval())
 			{
 				character.pagarOro(merchantInv[choice].getBuyval());
 				character.addItem(merchantInv[choice]);
 				
-				cout << "Item comprado." << merchantInv[choice].getnombre() << " -" << merchantInv[choice].getBuyval() << "\n";
+				std::cout << "Item comprado." << merchantInv[choice].getnombre() << " -" << merchantInv[choice].getBuyval() << "\n";
 				
 				merchantInv.removeItem(choice);
 			}
 			else
 			{
-				cout << "No puedo permitirme este articulo!" << "\n";
+				std::cout << "No puedo permitirme este articulo!" << "\n";
 			}
 
 			break;
 
 		case 2: //Sell
 
-			cout << character.getInvAsString(true) << "\n";
+			std::cout << character.getInvAsString(true) << "\n";
 
-			cout << "= MENU VENTA =" << "\n\n";
+			std::cout << "= MENU VENTA =" << "\n\n";
 
-			cout << " - Oro: " << character.getOro() << "\n\n";
+			std::cout << " - Oro: " << character.getOro() << "\n\n";
 
 			if (character.getInventarioTamano() > 0)
 			{
-				cout << "Oro: " << character.getOro() << "\n";
-				cout << "Elije un articulo (-1 para salir): ";
+				std::cout << "Oro: " << character.getOro() << "\n";
+				std::cout << "Elije un articulo (-1 para salir): ";
 
-				cin >> choice;
+				std::cin >> choice;
 
-				while (cin.fail() || choice > character.getInventarioTamano() || choice < -1)
+				while (std::cin.fail() || choice > character.getInventarioTamano() || choice < -1)
 				{
 					system("CLS");
 
-					cout << "Opcion invalida!" << "\n";
-					cin.clear();
-					cin.ignore(100, '\n');
+					std::cout << "Opcion invalida!" << "\n";
+					std::cin.clear();
+					std::cin.ignore(100, '\n');
 
-					cout << "Oro: " << character.getOro() << "\n";
-					cout << "Elije un articulo (-1 para salir): ";
-					cin >> choice;
+					std::cout << "Oro: " << character.getOro() << "\n";
+					std::cout << "Elije un articulo (-1 para salir): ";
+					std::cin >> choice;
 				}
 
-				cin.ignore(100, '\n');
-				cout << "\n";
+				std::cin.ignore(100, '\n');
+				std::cout << "\n";
 
 				if (choice == -1)
 				{
-					cout << "Cancelado..." << "\n";
+					std::cout << "Cancelado..." << "\n";
 				}
 				else
 				{
 					character.masOro(character.getItem(choice).getSellval());
 
-					cout << "Item vendido!" << "\n";
-					cout << "Oro obtenido: " << character.getItem(choice).getSellval() << "\n\n";
+					std::cout << "Item vendido!" << "\n";
+					std::cout << "Oro obtenido: " << character.getItem(choice).getSellval() << "\n\n";
 					character.removeItem(choice);
 				}
 			}
 			else
 			{
-				cout << "inventario vacio..." << "\n";
+				std::cout << "inventario vacio..." << "\n";
 			}
 
 			break;
@@ -226,11 +224,11 @@ void Event::tiendaEncouter(Personaje&character)
 			break;
 		}
 
-		cout << "ENTER para continuar..." << "\n";
-		cin.get();
+		std::cout << "ENTER para continuar..." << "\n";
+		std::cin.get();
 	}
 
-	cout << "Saliste de la tienda..." << "\n\n";
+	std::cout << "Saliste de la tienda..." << "\n\n";
 }
 
 void Event::enemyEncouter(Personaje &character, dArr<Enemy>& enemies)
@@ -276,46 +274,46 @@ void Event::enemyEncouter(Personaje &character, dArr<Enemy>& enemies)
 			//Menu
 			//system("CLS");
 
-			cout << "= TU TURNO =" << "\n\n";
-			cout << "Continue..." << "\n\n";
-			cin.get();
+			std::cout << "= TU TURNO =" << "\n\n";
+			std::cout << "Continue..." << "\n\n";
+			std::cin.get();
 			system("CLS");
 
-			cout << "= MENU DE BATALLA =" << "\n\n";
-			cout << "vida: " << character.getVida() << " / " << character.getVidaMax() << "\n\n";
+			std::cout << "= MENU DE BATALLA =" << "\n\n";
+			std::cout << "vida: " << character.getVida() << " / " << character.getVidaMax() << "\n\n";
 
-			cout << "0: Escape" << "\n";
-			cout << "1: ATACAR" << "\n";
-			cout << "2: DEFENDER" << "\n";
-			cout << "3: USAR Item" << "\n";
-			cout << "\n";
+			std::cout << "0: Escape" << "\n";
+			std::cout << "1: ATACAR" << "\n";
+			std::cout << "2: DEFENDER" << "\n";
+			std::cout << "3: USAR Item" << "\n";
+			std::cout << "\n";
 
-			cout << "Elige una opcion: ";
+			std::cout << "Elige una opcion: ";
 
-			cin >> choice;
+			std::cin >> choice;
 
-			while (cin.fail() || choice > 3 || choice < 0)
+			while (std::cin.fail() || choice > 3 || choice < 0)
 			{
 				system("CLS");
 
-				cout << "Opcion invalida!" << "\n";
-				cin.clear();
-				cin.ignore(100, '\n');		
+				std::cout << "Opcion invalida!" << "\n";
+				std::cin.clear();
+				std::cin.ignore(100, '\n');		
 
-				cout << "= MENU DE BATALLA =" << "\n\n";
+				std::cout << "= MENU DE BATALLA =" << "\n\n";
 
-				cout << "0: Escape" << "\n";
-				cout << "1: ATACAR" << "\n";
-				cout << "2: DEFENDER" << "\n";
-				cout << "3: USAR ITEM" << "\n";
-				cout << "\n";
+				std::cout << "0: Escape" << "\n";
+				std::cout << "1: ATACAR" << "\n";
+				std::cout << "2: DEFENDER" << "\n";
+				std::cout << "3: USAR ITEM" << "\n";
+				std::cout << "\n";
 
-				cout << "Elige una opcion: ";
-				cin >> choice;
+				std::cout << "Elige una opcion: ";
+				std::cin >> choice;
 			}
 
-			cin.ignore(100, '\n');
-			cout << "\n";
+			std::cin.ignore(100, '\n');
+			std::cout << "\n";
 
 			//Moves
 			switch (choice)
@@ -327,11 +325,11 @@ void Event::enemyEncouter(Personaje &character, dArr<Enemy>& enemies)
 			case 1: //ATTACK
 
 				//Seleccionar Enemigo
-				cout << "Seleccionar Enemigo: " << "\n\n";
+				std::cout << "Seleccionar Enemigo: " << "\n\n";
 
 				for (size_t i = 0; i < enemies.size(); i++)
 				{
-					cout << i << ": "
+					std::cout << i << ": "
 						<< "nivel: " << enemies[i].getnivel() << " - " <<
 						"vida: " << enemies[i].getvida() << "/" << enemies[i].getvidaMax() << " - " <<
 						"defensa: " << enemies[i].getdefensa() << " - " <<
@@ -340,24 +338,24 @@ void Event::enemyEncouter(Personaje &character, dArr<Enemy>& enemies)
 						"\n";
 				}
 
-				cout << "\n";
-				cout << "Elige una opcion: ";
+				std::cout << "\n";
+				std::cout << "Elige una opcion: ";
 
-				cin >> choice;
+				std::cin >> choice;
 
-				while (cin.fail() || choice >= enemies.size() || choice < 0)
+				while (std::cin.fail() || choice >= enemies.size() || choice < 0)
 				{
-					cout << "Opcion invalida!" << "\n";
-					cin.clear();
-					cin.ignore(100, '\n');
+					std::cout << "Opcion invalida!" << "\n";
+					std::cin.clear();
+					std::cin.ignore(100, '\n');
 
-					cout << "Seleccionar Enemigo: " << "\n\n";
-					cout << "Elige una opcion: ";
-					cin >> choice;
+					std::cout << "Seleccionar Enemigo: " << "\n\n";
+					std::cout << "Elige una opcion: ";
+					std::cin >> choice;
 				}
 
-				cin.ignore(100, '\n');
-				cout << "\n";
+				std::cin.ignore(100, '\n');
+				std::cout << "\n";
 
 				//Attack roll
 				combatTotal = enemies[choice].getdefensa() + character.getPresicion();
@@ -366,30 +364,30 @@ void Event::enemyEncouter(Personaje &character, dArr<Enemy>& enemies)
 				combatRollPlayer = rand() % playerTotal + 1;
 				combatRollEnemy = rand() % enemyTotal + 1;
 
-				cout << "Total de Combates: " << combatTotal << "\n";
-				cout << "Porcentaje Enemigo: " << enemyTotal << "\n";
-				cout << "Porcentaje del Jugador: " << playerTotal << "\n\n";
-				cout << "Jugador Roll: " << combatRollPlayer << "\n";
-				cout << "Jugador Roll: " << combatRollEnemy << "\n\n";
+				std::cout << "Total de Combates: " << combatTotal << "\n";
+				std::cout << "Porcentaje Enemigo: " << enemyTotal << "\n";
+				std::cout << "Porcentaje del Jugador: " << playerTotal << "\n\n";
+				std::cout << "Jugador Roll: " << combatRollPlayer << "\n";
+				std::cout << "Jugador Roll: " << combatRollEnemy << "\n\n";
 
 				if (combatRollPlayer > combatRollEnemy) //Hit
 				{
-					cout << "HIT! " << "\n\n";
+					std::cout << "HIT! " << "\n\n";
 					
 					damage = character.getDano();
 					enemies[choice].tomaDano(damage);
 
-					cout << "Danio: " << damage << "!" << "\n\n";
+					std::cout << "Danio: " << damage << "!" << "\n\n";
 
 					if (!enemies[choice].estaVivo())
 					{
-						cout << "ENEMIGO DERROTADO!" << "\n\n";
+						std::cout << "ENEMIGO DERROTADO!" << "\n\n";
 						gainExp = enemies[choice].getExp();
 						character.masExp(gainExp);
 						gainGold = rand() % enemies[choice].getnivel() * 10 + 1;
 						character.masOro(gainGold);
-						cout << "EXP GANADA: " << gainExp << "\n";
-						cout << "ORO GANADO: " << gainGold << "\n\n";
+						std::cout << "EXP GANADA: " << gainExp << "\n";
+						std::cout << "ORO GANADO: " << gainGold << "\n\n";
 
 						//Item roll
 						int roll = rand() % 100 + 1;
@@ -432,13 +430,13 @@ void Event::enemyEncouter(Personaje &character, dArr<Enemy>& enemies)
 							{
 								Arma tempW(character.getNivel(), rareza);
 								character.addItem(tempW);
-								cout << "ARMA CAIDA!" << "\n";
+								std::cout << "ARMA CAIDA!" << "\n";
 							}
 							else
 							{
 								Armadura tempA(character.getNivel(), rareza);
 								character.addItem(tempA);
-								cout << "ARMADURA CAIDA!" << "\n";
+								std::cout << "ARMADURA CAIDA!" << "\n";
 							}
 						}
 
@@ -447,7 +445,7 @@ void Event::enemyEncouter(Personaje &character, dArr<Enemy>& enemies)
 				}
 				else //Miss
 				{
-					cout << "MISSED! \n\n";
+					std::cout << "MISSED! \n\n";
 				}
 
 				break;
@@ -469,20 +467,20 @@ void Event::enemyEncouter(Personaje &character, dArr<Enemy>& enemies)
 		}
 		else if(!playerTurn && !playerDefeated && !escape && !enemiesDefeated)
 		{
-			cout << "= TURNO ENEMIGO =" << "\n";
+			std::cout << "= TURNO ENEMIGO =" << "\n";
 
-			cout << "Continue..." << "\n\n";		
-			cin.get();
+			std::cout << "Continue..." << "\n\n";		
+			std::cin.get();
 			system("CLS");
 
 			//Enemy attack
 			for (size_t i = 0; i < enemies.size(); i++)
 			{
-				cout << "Continue..." << "\n\n";
-				cin.get();
+				std::cout << "Continue..." << "\n\n";
+				std::cin.get();
 				system("CLS");
 				
-				cout << "Enemigo: " << i << "\n\n";
+				std::cout << "Enemigo: " << i << "\n\n";
 
 				//Attack roll
 				combatTotal = enemies[i].getpresicion() + (character.getDefensa() + character.getSumaDefensa());
@@ -491,31 +489,31 @@ void Event::enemyEncouter(Personaje &character, dArr<Enemy>& enemies)
 				combatRollPlayer = rand() % playerTotal + 1;
 				combatRollEnemy = rand() % enemyTotal + 1;
 
-				cout << "Total de Combates: " << combatTotal << "\n";
-				cout << "Porcentaje Enemigo: " << enemyTotal << "\n";
-				cout << "Porcentaje del Jugador: " << playerTotal << "\n\n";
-				cout << "Jugador Roll: " << combatRollPlayer << "\n";
-				cout << "Jugador Roll: " << combatRollEnemy << "\n\n";
+				std::cout << "Total de Combates: " << combatTotal << "\n";
+				std::cout << "Porcentaje Enemigo: " << enemyTotal << "\n";
+				std::cout << "Porcentaje del Jugador: " << playerTotal << "\n\n";
+				std::cout << "Jugador Roll: " << combatRollPlayer << "\n";
+				std::cout << "Jugador Roll: " << combatRollEnemy << "\n\n";
 
 				if (combatRollPlayer < combatRollEnemy) //Hit
 				{
-					cout << "HIT! " << "\n\n";
+					std::cout << "HIT! " << "\n\n";
 
 					damage = enemies[i].getDamage();
 					character.tomaDano(damage);
 
-					cout << "Danio: " << damage << "!" << "\n";
-					cout << "vida: " << character.getVida() << " / " << character.getVidaMax() << "\n\n";
+					std::cout << "Danio: " << damage << "!" << "\n";
+					std::cout << "vida: " << character.getVida() << " / " << character.getVidaMax() << "\n\n";
 
 					if (!character.estaVivo())
 					{
-						cout << "HAS SIDO DERROTADO!" << "\n\n";
+						std::cout << "HAS SIDO DERROTADO!" << "\n\n";
 						playerDefeated = true;
 					}
 				}
 				else //Miss
 				{
-					cout << "MISSED! \n\n";
+					std::cout << "MISSED! \n\n";
 				}
 			}
 
@@ -558,21 +556,21 @@ void Event::puzzleEncouter(Personaje &character)
 		chances--;
 		std::cout << puzzle.getAsString() << "\n";
 
-		cout << "\nTU RESPUESTA: ";
-		cin >> userAns;
+		std::cout << "\nTU RESPUESTA: ";
+		std::cin >> userAns;
 
-		while (cin.fail())
+		while (std::cin.fail())
 		{
-			cout << "Opcion invalida!" << "\n";
-			cin.clear();
-			cin.ignore(100, '\n');
+			std::cout << "Opcion invalida!" << "\n";
+			std::cin.clear();
+			std::cin.ignore(100, '\n');
 
-			cout << "\nTU RESPUESTA: ";
-			cin >> userAns;				
+			std::cout << "\nTU RESPUESTA: ";
+			std::cin >> userAns;				
 		}
 		
-		cin.ignore(100, '\n');
-		cout << "\n";
+		std::cin.ignore(100, '\n');
+		std::cout << "\n";
 
 		if (puzzle.getCorrectAns() == userAns)
 		{
