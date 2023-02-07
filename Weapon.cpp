@@ -4,12 +4,12 @@ dArr<std::string> Arma::nombres;
 
 void Arma::initnombres()
 {
-	Arma::nombres.push("Butter-Knife");
-	Arma::nombres.push("Leaf-Cutter");
-	Arma::nombres.push("Face-Shredder");
-	Arma::nombres.push("Bro-Knife");
-	Arma::nombres.push("Katana-Sword");
-	Arma::nombres.push("Brutal-Murder");
+	Arma::nombres.push("Cuchillo pequenio");
+	Arma::nombres.push("Cortador de Hojas");
+	Arma::nombres.push("CortaCaras");
+	Arma::nombres.push("Navaja de acero");
+	Arma::nombres.push("Espada del Caos");
+	Arma::nombres.push("Asesinato Brutal");
 }
 
 Arma::Arma()
@@ -57,9 +57,9 @@ std::string Arma::toString()const
 		this->getnombre()
 		+ " | Lvl: "
 		+ std::to_string(this->getnivel())
-		+ " | rareza: "
+		+ " | Rareza: "
 		+ std::to_string(this->getRareza())
-		+ " | Damage: "
+		+ " | Danio: "
 		+ std::to_string(this->danoMin)
 		+ " - "
 		+ std::to_string(this->danoMax);

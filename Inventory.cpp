@@ -34,7 +34,7 @@ Inventario::Inventario(const Inventario&obj)
 Item& Inventario::operator[](const int index)
 {
 	if (index < 0 || index >= this->nrOfItems)
-		throw("BAD INDEX!");
+		throw("Indice incorrecto!");
 
 	return *this->itemArr[index];
 }
@@ -98,7 +98,7 @@ void Inventario::addItem(const Item &item)
 void Inventario::removeItem(int index)
 {
 	if (index < 0 || index >= this->nrOfItems)
-		throw("OUT OF BOUNDS REMOVE ITEM inventario");
+		throw("LIMITE EXCEDIDO, ELIMINAR ITEM");
 
 	delete this->itemArr[index];
 	this->itemArr[index] = this->itemArr[this->nrOfItems - 1];

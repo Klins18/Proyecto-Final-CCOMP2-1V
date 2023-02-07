@@ -2,14 +2,6 @@
 
 Puzzle::Puzzle(std::string filenombre)
 {
-	//SAVE/LOAD FORMAT
-	/*
-	Question
-	nrOfAns
-	answers
-	correctAns
-	*/
-
 	this->correctAnswer = 0;
 
 	std::ifstream inFile(filenombre);

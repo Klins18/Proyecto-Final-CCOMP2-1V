@@ -3,7 +3,7 @@
 Item::Item()
 {
 	this->itemtipo = -1;
-	this->nombre = "EMPTY";
+	this->nombre = "VACIO";
 	this->nivel = 0;
 	this->buyval = 0;
 	this->sellval = 0;

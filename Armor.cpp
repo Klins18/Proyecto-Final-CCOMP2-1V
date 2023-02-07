@@ -5,12 +5,12 @@ dArr<std::string> Armadura::nombres;
 
 void Armadura::initnombres()
 {
-	Armadura::nombres.push("Bro-Saver");
-	Armadura::nombres.push("Cotton-Rag");
-	Armadura::nombres.push("Devlish-Defender");
-	Armadura::nombres.push("Angels-Balls");
-	Armadura::nombres.push("Iron-Sheets");
-	Armadura::nombres.push("Assassins-Bedsheets");
+	Armadura::nombres.push("Angel de la Guarda");
+	Armadura::nombres.push("Capucha de lana");
+	Armadura::nombres.push("Defensa Recia");
+	Armadura::nombres.push("Armadura del Caos");
+	Armadura::nombres.push("Placas de Hierro");
+	Armadura::nombres.push("Dagas de Asesino");
 }
 
 Armadura::Armadura()
@@ -42,7 +42,7 @@ Armadura::Armadura(int nivel, int rareza)
 		this->tipoStr = "PERNERAS";
 			break;
 	default:
-		this->tipoStr = "ERROR INVALID!";
+		this->tipoStr = "ERROR - INVALIDO!";
 			break;
 	}
 

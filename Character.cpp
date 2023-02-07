@@ -95,30 +95,30 @@ void Personaje::init(const string nombre)
 void Personaje::display() const
 {
 	cout << "= Hoja de Personaje =" << "\n";
-	cout << "= nombre: " << this->nombre << "\n";
-	cout << "= nivel: " << this->nivel << "\n";
+	cout << "= Nombre: " << this->nombre << "\n";
+	cout << "= Nivel: " << this->nivel << "\n";
 	cout << "= Exp: " << this->exp << "\n";
 	cout << "= Exp to next nivel: " << this->expSub << "\n";
-	cout << "= estadisticasPts: " << this->estadisticasPts << "\n";
+	cout << "= EstadisticasPts: " << this->estadisticasPts << "\n";
 	cout << "\n";
-	cout << "= Strenght: " << this->fuerza << "\n";
-	cout << "= vitalidad: " << this->vitalidad << "\n";
-	cout << "= reflejos: " << this->reflejos << "\n";
-	cout << "= inteligencia: " << this->inteligencia << "\n";
+	cout << "= Fuerza: " << this->fuerza << "\n";
+	cout << "= Vitalidad: " << this->vitalidad << "\n";
+	cout << "= Reflejos: " << this->reflejos << "\n";
+	cout << "= Inteligencia: " << this->inteligencia << "\n";
 	cout << "\n";
-	cout << "= vida: " << this->vida << " / " << this->vidaMax << "\n";
-	cout << "= energia: " << this->energia << " / " << this->energiaMax << "\n";
-	cout << "= Damage: " << this->danoMin << "( +" << this->armaaa.getdanoMin() << ")" << " - "<< this->danoMax << "( +" << this->armaaa.getdanoMax() << ")" << "\n";
-	cout << "= defensa: " << this->defensa << "( +" << std::to_string(this->getSumaDefensa()) << ")" << "\n";
-	cout << "= presicion: " << this->presicion << "\n";
-	cout << "= suerte: " << this->suerte << "\n";
+	cout << "= Vida: " << this->vida << " / " << this->vidaMax << "\n";
+	cout << "= Energia: " << this->energia << " / " << this->energiaMax << "\n";
+	cout << "= Danio: " << this->danoMin << "( +" << this->armaaa.getdanoMin() << ")" << " - "<< this->danoMax << "( +" << this->armaaa.getdanoMax() << ")" << "\n";
+	cout << "= Defensa: " << this->defensa << "( +" << std::to_string(this->getSumaDefensa()) << ")" << "\n";
+	cout << "= Presicion: " << this->presicion << "\n";
+	cout << "= Suerte: " << this->suerte << "\n";
 	cout << "\n";
 	cout << "= Distance Travelled: " << this->distanciaViajada << "\n";
-	cout << "= Gold: " << this->oro << "\n";
+	cout << "= Oro: " << this->oro << "\n";
 	cout << "\n";
-	cout << "= arma: " << this->armaaa.getnombre()
+	cout << "= Arma: " << this->armaaa.getnombre()
 		<< " Lvl: " << this->armaaa.getnivel()
-		<< " Dam: " << this->armaaa.getdanoMin() << " - " << this->armaaa.getdanoMax() << "\n";
+		<< " Danio: " << this->armaaa.getdanoMin() << " - " << this->armaaa.getdanoMax() << "\n";
 	cout << "= Armadura CASCO: " << this->casco.getnombre()
 		<< " Lvl: " << this->casco.getnivel()
 		<< " Def: " << this->casco.getDefensa() << "\n";
@@ -162,7 +162,7 @@ string Personaje::getInvAsString(bool tienda)
 	{
 		if (tienda)
 		{
-			inv += to_string(i) + ": " + this->inventario[i].toString() + "\n" + " - Sell val: "
+			inv += to_string(i) + ": " + this->inventario[i].toString() + "\n" + " - Vender val: "
 				+ std::to_string(this->inventario[i].getSellval()) + "\n";
 		}
 		else
@@ -209,11 +209,11 @@ void Personaje::subidaNvl()
 
 		this->nuevStats();
 
-		cout << "YOU ARE NOW nivel " << this->nivel << "!" << "\n\n";
+		cout << "Eres Nivel:  " << this->nivel << "!" << "\n\n";
 	}
 	else
 	{
-		cout << "NOT ENOUGH EXP!" << "\n\n";
+		cout << "EXP INSUFICIENTE!" << "\n\n";
 	}
 }
 
@@ -239,34 +239,34 @@ void Personaje::nuevStats()
 void Personaje::addStats(int stat, int val)
 {
 	if (this->estadisticasPts < val)
-		cout << "ERROR! NOT ENOUGH estadisticasPts!" << "\n";
+		cout << "ERROR! estadisticasPts! Insuficientes" << "\n";
 	else
 	{
 		switch (stat)
 		{
 		case 0:
 			this->fuerza += val;
-			cout << "fuerza MEJORADA!" << "\n";
+			cout << "FUERZA MEJORADA!" << "\n";
 
 			break;
 
 		case 1:
 			this->vitalidad += val;
-			cout << "vitalidad MEJORADA!" << "\n";
+			cout << "VITALIDAD MEJORADA!" << "\n";
 			break;
 
 		case 2:
 			this->reflejos += val;
-			cout << "reflejos MEJORADA!" << "\n";
+			cout << "REFLEJOS MEJORADA!" << "\n";
 			break;
 
 		case 3:
 			this->inteligencia += val;
-			cout << "inteligencia MEJORADA!" << "\n";
+			cout << "INTELIGENCIA MEJORADA!" << "\n";
 			break;
 
 		default:
-			cout << "NO SUCH STAT!" << "\n";
+			cout << "NO HAY ESTADISTICA!" << "\n";
 			break;
 		}
 
@@ -280,7 +280,7 @@ void Personaje::equiparItem(unsigned index)
 {
 	if (index < 0 || index >= this->inventario.size())
 	{
-		cout << "No valid item selected!" << "\n\n";
+		cout << "Item invalido!" << "\n\n";
 	}
 	else
 	{
@@ -327,13 +327,13 @@ void Personaje::equiparItem(unsigned index)
 				this->inventario.removeItem(index);
 				break;
 			default:
-				cout << "ERROR Armadura tipo INVALID!" << "\n\n";
+				cout << "ERROR TIPO DE ARMADURA INVALIDA!" << "\n\n";
 				break;
 			}
 		}
 		else
 		{
-			cout << "ERROR EQUIP ITEM, ITEM IS NOT Armadura OR arma!";
+			cout << "ERROR AL EQUIPAR, EL ITEM NO ES UNA ARMADURA O UN ARMA!";
 		}
 	}
 }
@@ -341,7 +341,7 @@ void Personaje::equiparItem(unsigned index)
 void Personaje::removeItem(const int index)
 {
 	if (index < 0 || index >= this->inventario.size())
-		cout << "ERROR, NOT POSSIBLE TO REMOVE ITEM, removeItem Character" << "\n\n";
+		cout << "ERROR,NO ES POSIBLE QUITAR EL ITEM" << "\n\n";
 	else
 	{
 		this->inventario.removeItem(index);
@@ -352,8 +352,8 @@ const Item& Personaje::getItem(const int index)
 {
 	if (index < 0 || index >= this->inventario.size())
 	{
-		cout << "ERROR, NOT POSSIBLE TO REMOVE ITEM, getItem Character" << "\n\n";
-		throw("ERROR OUT OF BOUNDS, GETITEM CHARACTER");
+		cout << "ERROR, NO ES POSIBLE RETIRAR EL ITEM" << "\n\n";
+		throw("ERROR FUERA DE LIMITES");
 	}
 
 	return this->inventario[index];

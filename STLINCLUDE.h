@@ -8,6 +8,5 @@
 #include<fstream>
 #include<iostream>
 #include<iomanip>
-
 #include"dArr.h"
 #include"gui_functions.h"
