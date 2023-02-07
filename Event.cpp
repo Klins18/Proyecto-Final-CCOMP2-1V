@@ -1,6 +1,6 @@
 #include "Event.h"
 
-int Event::nrOfEvents = 4;
+int Event::nrOfEvents = 10;
 
 using namespace std;;
 
@@ -16,28 +16,29 @@ Event::~Event()
 
 void Event::generateEvent(Personaje &character, dArr<Enemy>& enemies)
 {
-	int i = 5;//rand() % Event::nrOfEvents+5;
+	int i = rand() % Event::nrOfEvents;
 
 	switch (i)
 	{
 	case 0:
     case 1:
     case 2:
+	case 3:
 		//Enemy encounter
 		this->enemyEncouter(character, enemies);
 		break;
-	case 3:
     case 4:
     case 5:
+	case 6:
+	case 7:
 		//Puzzle
 		this->puzzleEncouter(character);
 		break;
-	case 6:
-    case 7:
+    case 8:
 		//tienda
 		this->tiendaEncouter(character);
 		break;
-	case 8:
+	case 9:
 		//Boss
 		cout << "Encuentro con Boss proximanente..." << "\n";
 		break;

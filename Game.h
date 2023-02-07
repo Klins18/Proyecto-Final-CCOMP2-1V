@@ -28,6 +28,7 @@ public:
 
 	//Functions
     void BarraCarga(); //Barra de carga
+	void imprimeAscii(int); //Imprime el personaje en txt
 	void initGame(); //initGame
 	void menuPrincipal(); //mainMenu
 	void creaNuevoPersonaje(); //createNewCharacter

@@ -1,5 +1,7 @@
 #include "Character.h"
+#include "Game.h"
 #include <cmath>
+Game game;
 Personaje::Personaje()
 {
 	this->distanciaViajada = 0;

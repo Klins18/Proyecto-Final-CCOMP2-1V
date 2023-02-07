@@ -6,6 +6,7 @@ int main()
 
 	Game game;
 	game.BarraCarga();
+	game.imprimeAscii(0);
 	game.initGame();
 	
 	while (game.getPlaying())

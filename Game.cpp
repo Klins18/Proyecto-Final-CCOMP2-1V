@@ -33,14 +33,55 @@ void Game::initGame()
 	in.close();	
 }
 void Game::BarraCarga(){
-	int segundos = 2;
+	int segundos = 1;
 	std::cout << "\t\t\t\t   CARGANDO...\n";
 	for(int i=0; i<90;i++){
         std::cout << char(219);
-        Sleep(segundos*1000/80);
+        Sleep(segundos*100/80);
     }
     std::cout<<"\nCompletado!\n";
 }
+
+
+void Game::imprimeAscii(int k){
+	ifstream txtAscii;
+	switch (k){
+	case 0:
+		txtAscii.open("C:/Users/Klins/Desktop/C++/CCOMP-2023R/Juego/personajesASCII/persoAscii.txt");
+		if(txtAscii.is_open()){
+			std::string linea;
+			while(std::getline(txtAscii, linea)){
+				std::cout << linea << std::endl;
+		}
+		txtAscii.close();
+		}
+		break;
+	case 1:
+		std::cout << "  _______ _                 _            __                   _             _             \n"
+			" |__   __| |               | |          / _|                 | |           (_)            \n"
+			"    | |  | |__   __ _ _ __ | | _____   | |_ ___  _ __   _ __ | | __ _ _   _ _ _ __   __ _ \n"
+			"    | |  | '_ \\ / _` | '_ \\| |/ / __|  |  _/ _ \\| '__| | '_ \\| |/ _` | | | | | '_ \\ / _` |\n"
+			"    | |  | | | | (_| | | | |   <\\__ \\  | || (_) | |    | |_) | | (_| | |_| | | | | | (_| |\n"
+			"    |_|  |_| |_|\\__,_|_| |_|_|\\_\\___/  |_| \\___/|_|    | .__/|_|\\__,_|\\__, |_|_| |_|\\__, |\n"
+			"                                                       | |             __/ |         __/ |\n"
+			"                                                       |_|            |___/         |___/ \n";
+		break;
+	case 2: //STATS
+		txtAscii.open("C:/Users/Klins/Desktop/C++/CCOMP-2023R/Juego/personajesASCII/stats.txt");
+		if(txtAscii.is_open()){
+			std::string linea;
+			while(std::getline(txtAscii, linea)){
+				std::cout << linea << std::endl;
+		}
+		txtAscii.close();
+		}
+		break;		
+	default:
+		break;
+	}
+	
+}
+
 void Game::menuPrincipal()//mainMenu
 {
 	cout << "ENTER para continuar..." << "\n";
@@ -57,33 +98,33 @@ void Game::menuPrincipal()//mainMenu
 
 		cout << "= MENU PRINCIPAL =" << "\n" << "\n"; //main menu
 
-		cout << "= Active character: " <<
+		cout << "= Perfil Seleccionado: " <<
 			this->personajes[activarPersonaje].getNombre() << " Nr: " << //personajes, activarPersonaje
 			this->activarPersonaje + 1 << "/" << this->personajes.size() << //activarPersonaje, personajes
 			" =" << "\n" << "\n";
 
-		cout << "0: Salir" << "\n"; //Quit
-		cout << "1: Viajar" << "\n"; //Travel
-		cout << "2: Subir de nivel" << "\n"; //nivel up
-		cout << "3: Descansar" << "\n"; //rest
-		cout << "4: Hoja de personaje" << "\n"; //Character sheet
-		cout << "5: Crea nuevo personaje" << "\n"; //Create new character
-		cout << "6: Selecciona personaje" << "\n"; //Select character
-		cout << "7: Guarda personajes" << "\n"; //Save personajes
-		cout << "8: Carga personajes" << "\n"; //Load personajes
+		cout << "0: Salir" << "\n";
+		cout << "1: Viajar" << "\n"; 
+		cout << "2: Subir de nivel" << "\n"; 
+		cout << "3: Descansar" << "\n"; 
+		cout << "4: Hoja de personaje" << "\n"; 
+		cout << "5: Crea nuevo personaje" << "\n"; 
+		cout << "6: Selecciona personaje" << "\n"; 
+		cout << "7: Guarda personajes" << "\n";
+		cout << "8: Carga personajes" << "\n";
 
 		cout << "\n";
 
-		cout << "\n" << "Eleccion: "; //Choice
+		cout << "\n" << "Eleccion: ";
 		cin >> this->choice;
 
 		while (cin.fail() || this->choice > 9)
 		{
-			cout << "Entrada erronea!" << "\n";//Faulty input
+			cout << "Entrada erronea!" << "\n";
 			cin.clear();
 			cin.ignore(100, '\n');
 
-			cout << "\n" << "Eleccion (0 - 8): "; // choice
+			cout << "\n" << "Eleccion (0 - 8): "; 
 			cin >> this->choice;
 		}
 
@@ -94,52 +135,44 @@ void Game::menuPrincipal()//mainMenu
 		{
 		case 0: //QUIT
 			playing = false;
-			this->guardaPersonajes(); //savepersonajes
-			
-		std::cout << "  _______ _                 _            __                   _             _             \n"
-			" |__   __| |               | |          / _|                 | |           (_)            \n"
-			"    | |  | |__   __ _ _ __ | | _____   | |_ ___  _ __   _ __ | | __ _ _   _ _ _ __   __ _ \n"
-			"    | |  | '_ \\ / _` | '_ \\| |/ / __|  |  _/ _ \\| '__| | '_ \\| |/ _` | | | | | '_ \\ / _` |\n"
-			"    | |  | | | | (_| | | | |   <\\__ \\  | || (_) | |    | |_) | | (_| | |_| | | | | | (_| |\n"
-			"    |_|  |_| |_|\\__,_|_| |_|_|\\_\\___/  |_| \\___/|_|    | .__/|_|\\__,_|\\__, |_|_| |_|\\__, |\n"
-			"                                                       | |             __/ |         __/ |\n"
-			"                                                       |_|            |___/         |___/ \n";
+			this->guardaPersonajes(); 
+			imprimeAscii(1);
 			break;
 
-		case 1: //TRAVEL
+		case 1:
 			viaje();
 
 			break;
 
-		case 2: //nivel UP
+		case 2: 
 			this->subeNivelPersonaje();
 
 			break;
 
-		case 3: //REST
+		case 3: 
 			descansar();
 
 			break;
 
-		case 4: //CHAR SHEET
-			this->menuPersonaje(); //characterMenu
+		case 4: 
+			this->menuPersonaje(); 
 			break;
 
-		case 5: //CREATE NEW CHAR
-			creaNuevoPersonaje(); //createNewCharacter
-			guardaPersonajes(); //savepersonajes
+		case 5: 
+			creaNuevoPersonaje(); 
+			guardaPersonajes(); 
 			break;
 
-		case 6: //SELECT CHAR
-			seleccionaPersonaje(); //selectCharacter
+		case 6: 
+			seleccionaPersonaje();
 			break;
 
-		case 7: //SAVE CHARS
-			guardaPersonajes(); //savepersonajes
+		case 7: 
+			guardaPersonajes();
 			break;
 
 		case 8: //LOAD CHARS
-			cargaPersonajes(); //cargaPersonajes
+			cargaPersonajes();
 			break;
 
 		default:
@@ -251,6 +284,7 @@ void Game::menuPersonaje()
 	do
 	{
 		system("CLS");
+		imprimeAscii(2);
 		cout << gui::menu_title("MENU DEL PERSONAJE");
 
 		cout << gui::menu_divider();

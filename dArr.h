@@ -68,7 +68,7 @@ template<typename T>
 T& dArr<T>::operator[] (const unsigned index)
 {
 	if (index < 0 || index >= this->nrOfEl)
-		throw "OUT OF BOUNDS INDEXING OPERATOR.";
+		throw "Operador fuera de limites.";
 
 	return *this->arr[index];
 }
@@ -149,7 +149,7 @@ template<typename T>
 void dArr<T>::remove(const unsigned index, bool ordered)
 {
 	if (index < 0 || index >= this->nrOfEl)
-		throw "OUT OF BOUNDS REMOVE.";
+		throw "<Fuera de Limite>.";
 
 	if (ordered)
 	{
