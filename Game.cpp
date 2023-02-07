@@ -75,7 +75,17 @@ void Game::imprimeAscii(int k){
 		}
 		txtAscii.close();
 		}
-		break;		
+		break;
+	case 3: //MENU
+		txtAscii.open("C:/Users/Klins/Desktop/C++/CCOMP-2023R/Juego/personajesASCII/menu.txt");
+		if(txtAscii.is_open()){
+			std::string linea;
+			while(std::getline(txtAscii, linea)){
+				std::cout << linea << std::endl;
+		}
+		txtAscii.close();
+		}
+		break;			
 	default:
 		break;
 	}
@@ -96,7 +106,7 @@ void Game::menuPrincipal()//mainMenu
 			cout << "SUBIDA DE NIVEL DISPONIBLE! \n\n"; //new nivel available
 		}
 
-		cout << "= MENU PRINCIPAL =" << "\n" << "\n"; //main menu
+		imprimeAscii(3);
 
 		cout << "= Perfil Seleccionado: " <<
 			this->personajes[activarPersonaje].getNombre() << " Nr: " << //personajes, activarPersonaje
